@@ -14,20 +14,20 @@ def preprocess_image(image):
 
     if img.shape != (224,224,3):
         img = cv2.cvtColor(img, cv2.COLOR_GRAY2RGB)
-
+ 
     img = img / 255.0
-    img = np.expand_dims(img, 0)
+    img = np.expand_dims(img, 0) 
     return img
 
-model = Model_load("mask_Model_01.keras")
+model = Model_load("Mask_Model.keras") 
 
-st.set_page_config(page_title="FaceMask Detector", page_icon="😷")
+st.set_page_config(page_title="FaceMask Detector", page_icon="😷") 
 
-st.title("Face Mask Detection System !!")
-st.write("( Upload an image of a human and model will predict weather he/she is wearing mask or not.. )")
+st.title("Face Mask Detection System !!") 
+st.write("( Upload an image of a human and model will predict weather he/she is wearing mask or not.. )") 
 st.text('')
 st.text('')
-uploaded_file = st.file_uploader("Upload an image (😷):", type=["jpg", "png", "jpeg"])
+uploaded_file = st.file_uploader("Upload an image (😷):", type=["jpg", "png", "jpeg"]) 
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
