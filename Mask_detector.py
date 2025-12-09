@@ -36,9 +36,10 @@ if uploaded_file is not None:
     if st.button("Predict"):
         with st.spinner("Analyzing image..."):
             processed_image = preprocess_image(image)
-            prediction = model.predict(processed_image)
+            prediction = model.predict(processed_image)[0][0]
+            confidence_score = round(max(prediction, 1 - prediction) * 100)
 
             if prediction > 0.6: 
-                st.error("No Mask")
+                st.error(f"No Mask ({confidence_score})")
             else:
-                st.success("Mask Detected")
+                st.success(f"Mask Detected ({confidence_score} %)")
